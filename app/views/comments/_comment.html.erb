@@ -2,7 +2,8 @@
 	<div class="comments_wrapper clearfix">
 		<div class="pull-left">
 			<p class="lead"><%= comment.body %></p>
-			<p><small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by <%= comment.user.name %></small></p>
+			<p><small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by 
+			<%= link_to comment.user.name, comment.user %></small></p>
 		</div>
 
 		<div class="btn-group pull-right">
