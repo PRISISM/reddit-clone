@@ -12,8 +12,9 @@
     </h2>
 
     <div class="btn-group">
-      <a class="btn btn-default btn-sm" href="<%= link.url %>">Visit Link</a>
-      <%= link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
+      <% if link.url? %><a class="btn btn-default btn-sm" href="<%= link.url %>">Visit Link</a> 
+      <%else%> <button class="btn btn-default btn-sm">Text Post</button> 
+      <%end%>      <%= link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
         <span class="glyphicon glyphicon-chevron-up"></span>
         Upvote
         <%= link.get_upvotes.size %>
