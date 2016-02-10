@@ -2,8 +2,15 @@
   <h1><a href="<%= @link.url %>"><%= @link.title %></a><br> <small>Submitted by <%= link_to @link.user.name, @link.user %></small></h1>
 </div>
 
+<% if @link.body? %>
+<div>
+  <p><%= @link.body %>
+
+</div>
+<%end%>
+
 <div class="btn-group">
-	<%= link_to 'Visit URL', @link.url, class: "btn btn-primary" %>
+	<% if @link.url? %><%= link_to 'Visit URL', @link.url, class: "btn btn-primary" %> <%end%>
 </div>
 
 <% if @link.user == current_user -%>

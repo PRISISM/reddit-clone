@@ -2,12 +2,12 @@
   <h1><%= @user.name%>'s Profile</h1>
   <small>Signed up <%= time_ago_in_words(@user.created_at) %> ago. </small>
 </div>
-<h2> Submitted Links: </h2>
+<h2> Submitted Posts (<%= @user.links.count %>): </h2>
 <div class ="jumbotron">
 <% @user.links.each do |link| %>
   <div class="link row clearfix">
     <h2>
-      <%= link_to link.title, link %> <small>(<%=link.url.to_s%>)</small> <br>
+      <%= link_to link.title, link %> <%if link.url? %><small>(<%=link.url.to_s%>)</small><%end%> <br>
       <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.name %></small>
     </h2>
 

@@ -1,12 +1,14 @@
 <% @links.each do |link| %>
   <div class="link row clearfix">
     <h2>
-      <%= link_to link.title, link %> <small>(<%=link.url.to_s%>)</small> <br>
+      <%= link_to link.title, link %> <% if link.url? %><small>(<%=link.url.to_s%>)</small> <%end%><br>
       <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link_to link.user.name, link.user %></small>
     </h2>
 
     <div class="btn-group">
-      <a class="btn btn-default btn-sm" href="<%= link.url %>">Visit Link</a>
+      <% if link.url? %><a class="btn btn-default btn-sm" href="<%= link.url %>">Visit Link</a> 
+      <%else%> <button class="btn btn-default btn-sm">Text Post</button> 
+      <%end%>
       <%= link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
         <span class="glyphicon glyphicon-chevron-up"></span>
         Upvote
